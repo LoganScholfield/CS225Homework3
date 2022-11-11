@@ -1,0 +1,93 @@
+Problem 1
+    -This is just one iteration
+a. 3 - 
+there  does not exist
+
+
+b. 1 + 2 
+yes there exists
+    -> 3
+
+c. Not 1 
+There Does not exist
+    
+
+d. (1 + 3) = true
+    yes there exists
+    -> 4 = False
+
+e. 4 = False
+This gets stucks
+
+f. Not True And True And False
+yes there exists
+    -> ((False And True) And False)
+
+
+
+Problem 2 (12 points). Which of the expressions ei
+in the previous problem:
+a. are reducible?
+    b,d,f
+b. have a valuation?
+    a,b,f
+c. are stuck? - not reducable and not a value
+    e,c
+d. go wrong? - if it is, or will be stuck(this is more general)
+    e,c,d
+
+
+
+Problem 3 (8 points). For each of the expression ej that you’ve identified as having a valuation in the
+previous problem, provide it’s complete trace from ej to its valuation.
+
+a. 3
+ -> 3
+
+b. 1 + 2
+ -> 3
+
+f. Not True And True And False
+ -> ((False And True) And False)
+ -> (False And False)
+ -> False
+
+Problem 4 (12 points). Following the style of the semantics of And , extend the computational and
+contextual reduction rules of BOOL to provide an operational semantics for Or . You can specify either a
+left-to-right or right-to-left reduction semantics, but your semantics should be deterministic in the sense of
+Lecture Notes 9, Proposition 1.1.
+
+
+Computational:
+    OR1
+    True Or True -> True
+
+    OR2
+    True Or False -> True
+
+    OR3
+    False Or True -> True
+
+    OR4
+    False or False -> False
+
+Contexual:
+
+    ORCL
+        e1 -> e1' / e1 OR e2 -> e1' Or e2
+    ORCR
+        e -> e' / v OR e -> v Or e'
+
+5.
+b. (10 points) Is your modified interpreter (with short circuiting) still correct for BOOL in the sense of
+Lecture Notes 10, Theorem 1.1? If you say no, provide an example that illustrates the fallacy
+
+
+This is no longer correct in the sense of Theorum 1.1 from Lecture notes 10. Although the final value of the expression is still the same in both short circuiting and not short
+circuiting cases the method for this reduction is no longer the same as the steps taken are different. For example take the expression True And (False or True).
+    Prior to the short circuiting implementation the reduction of this would take 2 steps
+                                                                => True And True 
+                                                                => True
+    After the short circuiting implementation the reduction would take just 1 step
+                                                                => True
+Do to this the theorum is no longer true as the reduction steps are not the same for either case.
